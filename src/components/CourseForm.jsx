@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function CourseForm() {
-    const [course, setCourse] = useState('');
-    const [city, setCity] = useState('');
+    const [courseId, setCourse] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://127.0.0.1:8000/user_courses_no_auth/create', {
-            g_course: course,
-            g_city: city
+        axios.post('http://127.0.0.1:8000/user_courses_no_auth/add_course', {
+            garmin_id: courseId,
         })
             .then(response => {
                 console.log(response);
@@ -17,17 +15,14 @@ function CourseForm() {
             .catch(error => {
                 console.error(error);
             });
+        setCourse('');
     };
 
     return (
         <form onSubmit={handleSubmit}>
             <label>
-                Course:
-                <input type="text" value={course} onChange={e => setCourse(e.target.value)} />
-            </label>
-            <label>
-                City:
-                <input type="text" value={city} onChange={e => setCity(e.target.value)} />
+                CourseId:
+                <input type="text" value={courseId} onChange={e => setCourse(e.target.value)} />
             </label>
             <input type="submit" value="Submit" />
         </form>

@@ -1,20 +1,21 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Header from "./Header";
 import Footer from "./Footer";
-import Note from "./Note";
 import CourseList from "./CourseList";
-import CourseCard from "./CourseCard";
+import CourseForm from "./CourseForm";
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Note />
-      <CourseList />
-      <CourseCard g_course='Trump' g_city='NYC'/>
-      <Footer />
-    </div>
-  );
+    return (
+        <div className="App">
+            <Header />
+            <Routes>
+                <Route path="/" element={<><CourseList /></>} />
+                <Route path="/add-course" element={<CourseForm />} />
+            </Routes>
+            <Footer />
+        </div>
+    );
 }
 
 export default App;

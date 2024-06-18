@@ -21,7 +21,7 @@ export default class CourseList extends React.Component {
         {
           this.state.courses
             .map(course =>
-              <li key={course.id}><CourseCard g_course={course.g_course} g_city={course.g_city}/></li>
+              <CourseCard g_course={course.g_course} g_city={course.g_city}/>
             )
         }
       </ul>
