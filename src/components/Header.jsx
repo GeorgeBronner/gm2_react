@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Header() {
     return (
         <header>
-            <h1>Course App</h1>
+            <h1>Golf Mapper 2</h1>
             <nav>
                 <Link to="/">Home</Link>
                 ||

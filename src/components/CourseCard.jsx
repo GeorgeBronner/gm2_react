@@ -6,7 +6,7 @@ function courseCard(props) {
     }
 
     return (
-        <card className={"note"}>
+        <card className={"courseCard"}>
             <h1>{props.g_course}</h1>
             <p>{props.g_city}</p>
             <button onClick={handleClick}>DELETE</button>
