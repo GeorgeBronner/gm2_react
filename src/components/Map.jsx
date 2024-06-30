@@ -4,7 +4,7 @@ function Map() {
             {/*<header className="App-header">*/}
                 <h1>Display HTML from FastAPI</h1>
                 <iframe
-                    src="http://localhost:8000/map/usermap"
+                    src="http://localhost:8000/map/usermap1"
                     title="HTML Content"
                     width="100%"
                     height="800px"
