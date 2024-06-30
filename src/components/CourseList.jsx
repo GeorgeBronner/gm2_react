@@ -3,12 +3,18 @@ import axios from 'axios';
 import CourseCard from "./CourseCard";
 
 export default class CourseList extends React.Component {
-  state = {
+
+
+    state = {
     courses: []
   }
 
   componentDidMount() {
-    axios.get(`http://127.0.0.1:8000/user_courses_no_auth/readall`)
+
+    axios.get(`http://127.0.0.1:8000/user_courses/readall`, {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }})
       .then(res => {
         const courses = res.data;
         this.setState({ courses });
