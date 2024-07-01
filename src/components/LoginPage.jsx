@@ -20,7 +20,7 @@ function LoginPage() {
             .then(response => {
                 localStorage.setItem('token', response.data.access_token);
                 console.log(`Access token: ${response.data.access_token}`);
-                navigate('/map');
+                navigate('/course_list');
             })
             .catch(error => {
                 console.error(error);

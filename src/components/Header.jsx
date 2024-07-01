@@ -1,25 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 
 function Header() {
-
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         localStorage.removeItem('token');
+        navigate('/');
     };
 
     return (
         <div>
-        {/*<header>*/}
-        {/*    <h1>Golf Mapper 2</h1>*/}
-        {/*    <nav>*/}
-        {/*        <Link to="/">Home</Link>*/}
-        {/*    </nav>*/}
-        {/*</header>*/}
 
         <Navbar bg="light" data-bs-theme="light">
             <Container>
