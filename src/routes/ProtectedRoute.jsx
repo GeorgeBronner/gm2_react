@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 
 const ProtectedRoute = ({ isAuthenticated }) => {
     if (!isAuthenticated) {
-        return <Navigate to="/login" />;
+        return <Navigate to="/course_list" />;
     }
 
     return <div>

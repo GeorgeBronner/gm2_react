@@ -11,7 +11,7 @@ export default class CourseList extends React.Component {
 
   componentDidMount() {
 
-    axios.get(`http://127.0.0.1:8000/user_courses/readall`, {
+    axios.get(`http://127.0.0.1:8000/user_courses/readall_ids_w_year`, {
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         }})
@@ -22,7 +22,10 @@ export default class CourseList extends React.Component {
   }
 
   deleteUserCourse = (id) => {
-        axios.delete(`http://127.0.0.1:8000/user_courses_no_auth/delete/${id}`)
+        axios.delete(`http://127.0.0.1:8000/user_courses/delete/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }})
             .then(response => {
                 console.log(response);
                 // After deleting the course, fetch the updated list of courses
@@ -39,7 +42,7 @@ export default class CourseList extends React.Component {
         {
           this.state.courses
             .map(course =>
-              <CourseCard g_course={course.g_course} g_city={course.g_city} onDelete={() => this.deleteUserCourse(course.id)}/>
+              <CourseCard g_course={course.g_course} g_city={course.g_city} year={course.year} onDelete={() => this.deleteUserCourse(course.id)}/>
             )
         }
       </ul>
