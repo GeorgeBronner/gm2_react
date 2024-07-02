@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-function Map(user) {
+function Map() {
     const iframeRef = useRef(null);
 
     const token = localStorage.getItem("token")
