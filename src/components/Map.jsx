@@ -23,7 +23,7 @@ function Map(user) {
 
     return (
         <div className="App">
-            <h1>Display HTML from FastAPI</h1>
+            <h1>Your Map</h1>
             <iframe
                 ref={iframeRef}
                 title="HTML Content"
