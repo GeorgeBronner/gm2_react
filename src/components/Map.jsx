@@ -6,7 +6,7 @@ function Map() {
     const token = localStorage.getItem("token")
 
     useEffect(() => {
-        fetch('http://localhost:8000/map/usermap', {
+        fetch('http://localhost:8000/map/usermap?rand=' + new Date(), {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 // Add more headers as needed
@@ -19,7 +19,7 @@ function Map() {
                 doc.write(html);
                 doc.close();
             });
-    }, []);
+    }, [token]);
 
     return (
         <div className="App">
