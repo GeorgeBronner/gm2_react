@@ -9,6 +9,7 @@ import PageAfterAuth from "./components/PageAfterAuth";
 import Footer from "./components/Footer";
 import NewUser from "./components/NewUser";
 import LoginHeader from "./components/LoginHeader";
+import GarminCourses from "./components/GarminCourses";
 
 // Function to get the access token from cookies
 const getAccessToken = () => {
@@ -56,6 +57,10 @@ const router = createBrowserRouter(
                 {
                     path: '/add_course',
                     element: <CourseForm />
+                },
+                {
+                    path: '/garmin_course_list',
+                    element: <GarminCourses />
                 },
                 {
                     path: '/PageAfterAuth',
