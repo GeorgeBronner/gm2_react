@@ -56,6 +56,48 @@ footer p {
   word-wrap: break-word;
 }
 
+.course-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+/* Base style for Normal screens */
+.course-card {
+  width: calc(16.6% - 20px); /* 5 items per line */
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+/* Medium screens (e.g., tablets): 4 items per line */
+@media (max-width: 1550px) {
+  .course-card {
+    width: calc(20% - 20px);
+  }
+}
+
+/* Medium screens (e.g., tablets): 4 items per line */
+@media (max-width: 1270px) {
+  .course-card {
+    width: calc(25% - 20px);
+  }
+}
+
+/* Small screens (e.g., large phones): 3 items per line */
+@media (max-width: 1040px) {
+  .course-card {
+    width: calc(33.333% - 20px);
+  }
+}
+
+/* Extra small screens (e.g., small phones): 2 items per line */
+@media (max-width: 480px) {
+  .course-card {
+    width: calc(50% - 20px);
+  }
+}
+
 .courseCard button {
   position: relative;
   float: right;

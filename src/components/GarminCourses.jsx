@@ -38,14 +38,15 @@ export default class GarminCourses extends React.Component {
 
     render() {
         return (
-            <ul>
+            <div className="course-list-container">
                 {
-                    this.state.courses
-                        .map(course =>
-                            <CourseCard g_course={course.g_course} g_city={course.g_city} />
-                        )
+                    this.state.courses.map(course =>
+                        <div className="course-card">
+                            <CourseCard g_course={course.g_course} g_city={course.g_city} year={course.year} onDelete={() => this.deleteUserCourse(course.id)}/>
+                        </div>
+                    )
                 }
-            </ul>
+            </div>
         )
     }
 }
