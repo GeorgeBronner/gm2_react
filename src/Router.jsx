@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import NewUser from "./components/NewUser";
 import LoginHeader from "./components/LoginHeader";
 import GarminCourses from "./components/GarminCourses";
+import CourseSearch from "./components/CourseSearch";
 
 // Function to get the access token from cookies
 const getAccessToken = () => {
@@ -69,6 +70,10 @@ const router = createBrowserRouter(
                 {
                     path: '/map',
                     element: <Map />
+                },
+                {
+                    path: '/course_search',
+                    element: <CourseSearch />
                 },
             ]
         },
