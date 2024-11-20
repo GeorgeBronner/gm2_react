@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo, useReducer } from 'react';
-import ReactDOM from 'react-dom/client';
-
-// import './table.css';
-
+import axios from 'axios';
 import {
     flexRender,
     getCoreRowModel,
@@ -12,57 +9,66 @@ import {
     useReactTable,
 } from '@tanstack/react-table';
 
-import { makeData } from './makeData';
-import CourseForm from "./CourseForm";
-
-function PageTest() {
+function PageTest2() {
     const rerender = useReducer(() => ({}), {})[1];
 
     const columns = useMemo(
         () => [
             {
-                accessorKey: 'firstName',
+                accessorKey: 'g_course',
+                header: () => 'Course',
                 cell: info => info.getValue(),
                 footer: props => props.column.id,
             },
             {
-                accessorFn: row => row.lastName,
-                id: 'lastName',
+                accessorFn: row => row.g_city,
+                id: 'g_city',
                 cell: info => info.getValue(),
-                header: () => <span>Last Name</span>,
+                header: () => <span>City</span>,
                 footer: props => props.column.id,
             },
             {
-                accessorKey: 'age',
-                header: () => 'Age',
+                accessorKey: 'g_state',
+                header: () => 'State',
                 footer: props => props.column.id,
             },
             {
-                accessorKey: 'visits',
-                header: () => <span>Visits</span>,
-                footer: props => props.column.id,
-            },
-            {
-                accessorKey: 'status',
-                header: 'Status',
-                footer: props => props.column.id,
-            },
-            {
-                accessorKey: 'progress',
-                header: 'Profile Progress',
+                accessorKey: 'g_country',
+                header: () => <span>Country</span>,
                 footer: props => props.column.id,
             },
         ],
         []
     );
 
-    const [data, setData] = useState(() => makeData(1000));
-    const refreshData = () => setData(() => makeData(1000));
+    const [courseData, setCourseData] = useState([]);
+
+    const refreshData = useCallback(async () => {
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/readall', {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+            });
+            setCourseData(response.data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }, []);
+
+    useEffect(() => {
+        refreshData();
+    }, [refreshData]);
+
+    useEffect(() => {
+        console.log("trying to print course data");
+        console.log(courseData);
+    }, [courseData]);
 
     return (
         <>
             <MyTable
-                data={data}
+                data={courseData}
                 columns={columns}
             />
             <hr />
@@ -262,12 +268,4 @@ function Filter({ column, table }) {
     );
 }
 
-export default PageTest;
-// const rootElement = document.getElementById('root');
-// if (!rootElement) throw new Error('Failed to find the root element');
-//
-// ReactDOM.createRoot(rootElement).render(
-//     <React.StrictMode>
-//         <App />
-//     </React.StrictMode>
-// );
+export default PageTest2;
