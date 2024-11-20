@@ -25,6 +25,7 @@ function Header() {
                     <Nav.Link href="/garmin_course_list">Course List</Nav.Link>
                     <Nav.Link href="/course_search">Course Search</Nav.Link>
                     <Nav.Link href="/map">Map</Nav.Link>
+                    <Nav.Link href="/page_test">Page_Test</Nav.Link>
                     <Button onClick={handleLogout}>Logout</Button>
                 </Nav>
             </Container>
