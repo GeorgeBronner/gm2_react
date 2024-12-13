@@ -68,6 +68,7 @@ function PageTest2() {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
             });
+            response.data.shift();
             setCourseData(response.data);
         } catch (error) {
             console.error('Error fetching data:', error);
