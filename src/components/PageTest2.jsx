@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo, useReducer } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import {
     flexRender,
     getCoreRowModel,
@@ -37,6 +38,23 @@ function PageTest2() {
                 header: () => <span>Country</span>,
                 footer: props => props.column.id,
             },
+            {
+                accessorKey: 'id',
+                header: () => 'ID',
+                cell: info => info.getValue(),
+                footer: props => props.column.id,
+            },
+            {
+                accessorKey: 'id',
+                header: () => 'ID2',
+                cell: info => (
+                    <Link to={`/add_course/${info.getValue()}`}>
+                        {"Add Course"}
+                    </Link>
+                ),
+                footer: props => props.column.id,
+                enableColumnFilter: false, // Disable filtering for this column
+            },
         ],
         []
     );
@@ -60,10 +78,10 @@ function PageTest2() {
         refreshData();
     }, [refreshData]);
 
-    useEffect(() => {
-        console.log("trying to print course data");
-        console.log(courseData);
-    }, [courseData]);
+    // useEffect(() => {
+    //     console.log("trying to print course data");
+    //     console.log(courseData);
+    // }, [courseData]);
 
     return (
         <>
