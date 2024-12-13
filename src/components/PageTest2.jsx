@@ -79,11 +79,6 @@ function PageTest2() {
         refreshData();
     }, [refreshData]);
 
-    // useEffect(() => {
-    //     console.log("trying to print course data");
-    //     console.log(courseData);
-    // }, [courseData]);
-
     return (
         <>
             <MyTable

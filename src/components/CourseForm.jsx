@@ -4,16 +4,12 @@ import { useParams } from 'react-router-dom';
 
 function CourseForm() {
     const { courseIdParam } = useParams();
-    console.log("hello: here is courseIdParam at function call: " + courseIdParam);
-    console.log("hello: here is useParams at function call: " + JSON.stringify(useParams()));
     const [courseId, setCourse] = useState('');
     const [year, setYear] = useState('');
 
     useEffect(() => {
-        console.log("hello: here is courseIdParam: " + courseIdParam);
         if (courseIdParam && !isNaN(courseIdParam)) {
             setCourse(courseIdParam);
-            console.log("hello: here is courseIdParam in the set: " + courseIdParam);
         }
     }, [courseIdParam]);
 

@@ -20,10 +20,8 @@ const CourseSearch = () => {
                     size: pageSize
                 }
             });
-            console.log('API Response:', response.data);
             setCourses(response.data.items || []);
             setTotalPages(response.data.pages || 1);
-            console.log('Updated Courses State:', response.data.items || []);
         } catch (error) {
             console.error('Error fetching courses:', error);
         }
