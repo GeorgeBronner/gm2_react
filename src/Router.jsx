@@ -11,8 +11,6 @@ import NewUser from "./components/NewUser";
 import LoginHeader from "./components/LoginHeader";
 import GarminCourses from "./components/GarminCourses";
 import CourseSearch from "./components/CourseSearch";
-import PageTest from "./components/PageTest";
-import PageTest2 from "./components/PageTest2";
 
 // Function to get the access token from cookies
 const getAccessToken = () => {
