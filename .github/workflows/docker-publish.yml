@@ -1,0 +1,25 @@
+name: Build and Publish Image to Docker Hub
+
+on:
+  [workflow_dispatch]
+
+jobs:
+  publish_images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set timestamp
+        id: timestamp
+        run: echo "TIMESTAMP=$(date +%s)" >> $GITHUB_ENV
+
+      - name: Build image
+        run: |
+          docker build . --file Dockerfile --tag georgebronner/gm2_react:${{ env.TIMESTAMP }} --tag georgebronner/gm2_react:latest
+
+      - name: Push image to Docker Hub
+        run: |
+          echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u georgebronner --password-stdin
+          docker push georgebronner/gm2_react:${{ env.TIMESTAMP }}
+          docker push georgebronner/gm2_react:latest
