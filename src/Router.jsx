@@ -11,6 +11,7 @@ import NewUser from "./components/NewUser";
 import LoginHeader from "./components/LoginHeader";
 import GarminCourses from "./components/GarminCourses";
 import CourseSearch from "./components/CourseSearch";
+import GarminCoursesTable from "./components/GarminCoursesTable";
 
 // Function to get the access token from cookies
 const getAccessToken = () => {
@@ -62,6 +63,10 @@ const router = createBrowserRouter(
                 {
                     path: '/garmin_course_list',
                     element: <GarminCourses />
+                },
+                {
+                    path: '/garmin_course_table',
+                    element: <GarminCoursesTable />
                 },
                 {
                     path: '/PageAfterAuth',
